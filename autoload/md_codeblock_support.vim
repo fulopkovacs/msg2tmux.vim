@@ -1,7 +1,20 @@
 """md_codeblock_support.vim - Functions related to codeblock support in markdown files
 
-let s:vimux_markdown_code_block_start_pattern='```\(python\|py\|{r}\|r\|js\|javascript\)\n'
+let s:languages = {
+      \ "py": "python",
+      \ "python": "python",
+      \ "r": "r",
+      \ "{r}": "r",
+      \ "R": "r",
+      \ "{R}": "r",
+      \ "javascript": "javascript",
+      \ "js": "javascript",
+      \ "bash": "bash",
+      \ }
+let s:languages_pattern = '\(' . join(keys(s:languages), '\|') . '\)'
+let s:vimux_markdown_code_block_start_pattern='```' . s:languages_pattern . '\n'
 let s:vimux_markdown_code_block_end_pattern='```\n'
+
 
 
 function! md_codeblock_support#send_code_block_to_tmux_pane(pane="+")
@@ -12,6 +25,11 @@ function! md_codeblock_support#send_code_block_to_tmux_pane(pane="+")
 
   let l:original_pos=getcurpos()[1:-1]
   let l:first_line_in_block = search(s:vimux_markdown_code_block_start_pattern, 'Wb') + 1
+
+  "get language from the code block
+  let s:block_language = matchstr(getline(l:first_line_in_block-1), s:languages_pattern)
+  let g:msg2tmux_current_code_block_language = get(s:languages, s:block_language)
+
   let l:last_line_in_block = search(s:vimux_markdown_code_block_end_pattern, 'W')-1
   let l:block_text=getline(l:first_line_in_block,l:last_line_in_block)
   call cursor(original_pos)

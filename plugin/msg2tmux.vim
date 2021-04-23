@@ -6,6 +6,7 @@
 " License: MIT
 
 
+let g:msg2tmux_current_code_block_language = ""
 
 if !hasmapto('<Plug>SendCodeBlockToTmuxPane')
   map <unique> <LocalLeader>cc <Plug>SendCodeBlockToTmuxPane

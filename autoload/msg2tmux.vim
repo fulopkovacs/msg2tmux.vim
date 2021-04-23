@@ -7,15 +7,23 @@ function! msg2tmux#insert_line_breaks(lines) abort
   " `lines`: list of strings
 
   let l:tmux_linebreak = " C-o Down "
+
+  if g:msg2tmux_current_code_block_language == "r"
+    let l:tmux_linebreak = " Enter "
+  endif
+
   let l:lines_with_quotes = map(a:lines, { _, key -> shellescape(key, 1) })
   " INFO: The extra `l:tmux_linebreak` at the end of the file
   " is necessary for python code input where the least line is indented
   " TODO: remove this workaround later
-  if len(a:lines) > 1
-    return join(a:lines, l:tmux_linebreak) . l:tmux_linebreak
+  let s:msg = join(a:lines, l:tmux_linebreak)
+
+  if g:msg2tmux_current_code_block_language == "python"
+      return s:msg . l:tmux_linebreak
   else
-    return join(a:lines, l:tmux_linebreak)
+    return s:msg
   endif
+
 endfunction
 
 function! msg2tmux#send_keys_to_tmux_pane(message, opts = {}) abort
