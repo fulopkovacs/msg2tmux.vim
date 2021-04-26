@@ -1,5 +1,17 @@
 <p align="center">
-  <img title="" src="./media/msg2tmux-logo_small.png" alt="logo" width="212">
+<pre>
+  <code>
+            _     _
+          /   \ /   \
+          |    V    |
+>>>-VIM--------     /------->
+           \  TMUX /
+            \     /
+             \   /
+              \ /
+               V
+  </code>
+</pre>
 </p>
 
 # msg2tmux.vim
