@@ -1,0 +1,41 @@
+ *msg2tmux.txt*   Transform markdown documents into interactive notebooks
+
+                                    ▞▀▖▐            ~
+                          ▛▚▀▖▞▀▘▞▀▌ ▗▘▜▀ ▛▚▀▖▌ ▌▚▗▘~
+                          ▌▐ ▌▝▀▖▚▄▌▗▘ ▐ ▖▌▐ ▌▌ ▌▗▚ ~
+                          ▘▝ ▘▀▀ ▗▄▘▀▀▘ ▀ ▘▝ ▘▝▀▘▘ ▘~
+
+                      Transform markdown documents into~
+                    interactive notebooks with vim and tmux~
+
+
+Version: 0.1
+For Vim >= 8.0.0 and Neovim >= 0.4.0
+
+
+================================================================================
+                                                                      *overview*
+
+1. Overview~
+msg2tmux.vim is a plugin for sending code from markdown code blocks, or visual
+selection from vim to a tmux pane. This plugin is still in development. For
+more complete solutions for more specific (or generic) use cases see the |alternatives|.
+
+To find out more:
+https://github.com/fulopkovacs/msg2tmux.vim
+
+
+================================================================================
+                                                                  *alternatives*
+
+2. Alternatives~
+msg2tmux is a plugin for a very specific use case. If it doesn't match your
+needs, please check out these similar and more stable projects that were the
+inspirations for mst2tmux:
+
+- Nvim-R (https://github.com/jalvesaq/Nvim-R): for working with `R` (and R markdown documents)
+- Vimux (https://github.com/preservim/vimux): Interact with `tmux` panes from vim
+- tslime.vim (https://github.com/preservim/vimux): "a simple vim script to send portion of text from a vim buffer to a running tmux session" (source: their GitHub's README)
+
+
+vim: tw=78:ts=8:ft=help:norl:
