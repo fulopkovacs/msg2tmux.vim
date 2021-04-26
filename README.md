@@ -42,7 +42,7 @@ Compatible with both `vim` (from version `8.0` and above) and `nvim`.
 
 Use your preferred plugin manager, I use [`vim-plug`](https://github.com/junegunn/vim-plug):
 
-``g
+```
 Plug 'fulopkovacs/msg2tmux'
 Plug 'fulopkovacs/msg2tmux'
 ```
