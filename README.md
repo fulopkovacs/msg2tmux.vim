@@ -1,4 +1,6 @@
-<img title="" src="./img/msg2tmux-logo_small.png" alt="logo" data-align="center" width="212">
+<p align="center">
+  <img title="" src="./media/msg2tmux-logo_small.png" alt="logo" width="212">
+</p>
 
 # msg2tmux.vim
 
