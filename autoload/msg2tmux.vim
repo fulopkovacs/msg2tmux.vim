@@ -40,7 +40,7 @@ function! msg2tmux#send_keys_to_tmux_pane(message, opts = {}) abort
   let l:pane = get(a:opts, "pane", l:default_opts["pane"])
 
   let l:tmux_command_start = "tmux send-keys -t"
-  let l:target_pane = "+." . l:pane " the `+` selects the current window
+  let l:target_pane = l:pane
   let l:message = msg2tmux#insert_line_breaks(a:message)
   " echo '!' . join([l:tmux_command_start, l:target_pane, l:message , l:tmux_command_end], ' ')
   call execute('!' . join([l:tmux_command_start, l:target_pane, l:message , l:tmux_command_end], " "), "silent")

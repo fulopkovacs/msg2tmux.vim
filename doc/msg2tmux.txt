@@ -1,15 +1,15 @@
- *msg2tmux.txt*   Transform markdown documents into interactive notebooks
+*msg2tmux.txt* Transform markdown documents into interactive notebooks
 
 
-                                   _     _
-                                 /   \ /   \
-                                 |    V    |
+                                   _     _~
+                                 /   \ /   \~
+                                 |    V    |~
                        >>>-VIM--------     /------->
-                                  \  TMUX /
-                                   \     /
-                                    \   /
-                                     \ /
-                                      V
+                                  \  TMUX /~
+                                   \     /~
+                                    \   /~
+                                     \ /~
+                                      V~
 
                                     ▞▀▖▐            ~
                           ▛▚▀▖▞▀▘▞▀▌ ▗▘▜▀ ▛▚▀▖▌ ▌▚▗▘~
@@ -25,19 +25,19 @@ For Vim >= 8.0.0 and Neovim >= 0.4.0
 
 
 ================================================================================
-                                                                      *overview*
+                                                             *msg2tmux-overview*
 
 1. Overview~
 msg2tmux.vim is a plugin for sending code from markdown code blocks, or visual
-selection from vim to a tmux pane. This plugin is still in development. For
-more complete solutions for more specific (or generic) use cases see the |alternatives|.
+selection from vim to a tmux pane. THIS PLUGIN IS STILL IN DEVELOPMENT! For
+more complete solutions use cases check out the list of |msg2tmux-alternatives|.
 
 To find out more:
 https://github.com/fulopkovacs/msg2tmux.vim
 
 
 ================================================================================
-                                                                  *alternatives*
+                                                         *msg2tmux-alternatives*
 
 2. Alternatives~
 msg2tmux is a plugin for a very specific use case. If it doesn't match your
@@ -52,5 +52,35 @@ inspirations for mst2tmux:
   portion of text from a vim buffer to a running tmux session" (source: their
   GitHub's README)
 
+================================================================================
+                                                                *msg2tmux-usage*
+                                                   *msg2tmux-default-keybindings*
 
-vim: tw=78:ts=8:ft=help:norl:
+3. Usage and default keybindings~
+
+You have to run vim inside of tmux, and you must have at least one more pane
+open.
+
+GENERAL~
+
+<LocalLeader>we   Send the visual selection to the next
+                  tmux pane
+
+MARKDOWN, R-MARKDOWN~
+
+<LocalLeader>jj   Jump to next code block
+
+<LocalLeader>kk   Jump to previous code block
+
+<LocalLeader>cc   Execute the current code block in the next tmux pane
+
+<LocalLeader>pp   Execute the current and all previous code blocks in
+                  next tmux pane
+
+<LocalLeader>aa   Execute every code block of the document from the first to the
+                  last one in the next tmux pane
+
+<LocalLeader>cl   Sends the `C-l` keystroke to the next tmux pane (usually it
+                  clears that)
+
+# vim: tw=78:ts=8:ft=help:norl:
