@@ -28,9 +28,10 @@ endfunction
 
 function! msg2tmux#send_keys_to_tmux_pane(message, opts = {}) abort
   " Sends that selected message to a tmux pane of the current window
-  " `text`: list of strings - the message to send
-  " `tmux_command_end`: string - the key(s) to send after the message
-  " `pane`: number - id of the tmux pane
+  " `message`: list of strings - the message to send
+  " `opts`: a dict of options for the `tmux send-keys` command
+  "   `tmux_command_end`: string - the key(s) to send after the message
+  "   `pane`: number - id of the tmux pane
 
   let l:default_opts = {
         \ "command_end":"Enter",
@@ -42,7 +43,6 @@ function! msg2tmux#send_keys_to_tmux_pane(message, opts = {}) abort
   let l:tmux_command_start = "tmux send-keys -t"
   let l:target_pane = l:pane
   let l:message = msg2tmux#insert_line_breaks(a:message)
-  " echo '!' . join([l:tmux_command_start, l:target_pane, l:message , l:tmux_command_end], ' ')
   call execute('!' . join([l:tmux_command_start, l:target_pane, l:message , l:tmux_command_end], " "), "silent")
 endfunction
 
