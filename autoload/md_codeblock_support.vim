@@ -10,6 +10,7 @@ let s:languages = {
       \ "javascript": "javascript",
       \ "js": "javascript",
       \ "bash": "bash",
+      \ "lua": "lua",
       \ }
 let s:languages_pattern = '\(' . join(keys(s:languages), '\|') . '\)'
 let s:vimux_markdown_code_block_start_pattern='```' . s:languages_pattern . '\n'
