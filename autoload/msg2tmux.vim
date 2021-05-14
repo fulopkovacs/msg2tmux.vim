@@ -11,7 +11,22 @@ function! msg2tmux#escape_dash_first_char(line) abort
     let l:line = ' ' . l:line
   endif
   return l:line
+endfunction
 
+function! msg2tmux#create_new_pane_if_necessary() abort
+" Checks the number of panes in the active window,
+" and creates a new pane if that number is less than 2
+
+  let l:panes = split(
+    \ execute("!tmux display-message -p " . shellescape("#{window_panes}", 1), "silent"),
+    \ "\n")
+  let l:panes_num = str2nr(l:panes[2])
+  if l:panes_num < 2
+    " Must select previously selected pane (with `-`)
+    " after splitting the current pane
+    " `-l` defines the window size
+    call execute('!tmux splitw -l '. shellescape("20%", 1) . ' \; select-pane -t -', "silent")
+  endif
 endfunction
 
 function! msg2tmux#insert_line_breaks(lines, target) abort
@@ -48,11 +63,15 @@ function! msg2tmux#send_keys_to_tmux_pane(message, opts = {}) abort
   "   `tmux_command_end`: string - the key(s) to send after the message
   "   `pane`: number - id of the tmux pane
 
+
   " Ensure that vim is running in a tmux session
   if empty(getenv("TMUX"))
     echo "Please open vim in a tmux session to use the msg2tmux plugin!"
     return
   endif
+
+  " Ensure that there are at least 2 panes
+  call msg2tmux#create_new_pane_if_necessary()
 
   let l:default_opts = {
         \ "command_end":"Enter",
