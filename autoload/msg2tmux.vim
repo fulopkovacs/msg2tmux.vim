@@ -48,6 +48,12 @@ function! msg2tmux#send_keys_to_tmux_pane(message, opts = {}) abort
   "   `tmux_command_end`: string - the key(s) to send after the message
   "   `pane`: number - id of the tmux pane
 
+  " Ensure that vim is running in a tmux session
+  if empty(getenv("TMUX"))
+    echo "Please open vim in a tmux session to use the msg2tmux plugin!"
+    return
+  endif
+
   let l:default_opts = {
         \ "command_end":"Enter",
         \ "pane":"+"
