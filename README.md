@@ -16,7 +16,7 @@
 
 # [WIP] msg2tmux.vim
 
-> WARNING: This plugin is still in development, and may stuck in this state for ever. If you need something stable and robust you can check out ethese projects](#when-shouldnt-you-use-this-plugin-?) that inspired _msg2tmux_ in the first place.
+> WARNING: This plugin is still in development, and may stuck in this state for ever. If you need something stable and robust you can check out [these projects](#when-shouldnt-you-use-this-plugin-?) that inspired _msg2tmux_ in the first place.
 
 Transform markdown documents into interactive notebooks with `vim` and `tmux`.
 
